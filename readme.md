@@ -20,7 +20,14 @@ for image run
 docker run -p 80:80 pixellence/todoapi
 ```
 ## Usage
-
+First you need to add some mongodb configuration to appsettings.json file.
+  "DatabaseSettings": {
+    "TodoCollectionName": "Collection Name",
+    "ConnectionString": "Connection string",
+    "DatabaseName": "Database name"
+  },
+  
+after that
 You can test with this url
 
 http://127.0.0.1/api/Todo  
