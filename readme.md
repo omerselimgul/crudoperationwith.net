@@ -1,6 +1,6 @@
 # Todo
 
-Todo is a .net6 project for todo list .
+Todo is a .net6 project for todo list . this project was prepared according to google api standards
 
 ## Installation
 

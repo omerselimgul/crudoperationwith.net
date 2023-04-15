@@ -18,9 +18,18 @@ namespace OpenAPI.Controllers
         }
         // GET: api/<TodoController>
         [HttpGet]
-        public async Task<List<Todo>> Get()
+        public async Task<List<Todo>> List()
         {
             return await _service.GetAsync();
+        }
+        [HttpGet("{id:length(24)}")]
+        public async Task<IActionResult> Get(string id)
+        {
+            var todo = await _service.GetAsync(id);
+            if(todo is null){
+                return NotFound();
+            }
+            return CreatedAtAction(nameof(Get), new { id = todo.Id }, todo);
         }
         // POST api/<TodoController>
         [HttpPost]
@@ -31,7 +40,7 @@ namespace OpenAPI.Controllers
             return CreatedAtAction(nameof(Get), new { id = todo.Id }, todo);
         }
         [HttpPut("{id:length(24)}")]
-        public async Task<IActionResult> Update(string id, Todo updatedTodo)
+        public async Task<IActionResult> Update(string id, [FromBody] Todo updatedTodo)
         {
             var todo = await _service.GetAsync(id);
 
@@ -44,7 +53,7 @@ namespace OpenAPI.Controllers
 
             await _service.UpdateAsync(id, updatedTodo);
 
-            return NoContent();
+                return CreatedAtAction(nameof(Get), new { id = updatedTodo.Id }, updatedTodo);
         }
 
         [HttpDelete("{id:length(24)}")]
