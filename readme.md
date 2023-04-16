@@ -15,18 +15,21 @@ for image
 docker pull pixellence/dotnetapi:latest
 ```
 for image run
+First you need to add some mongodb configuration.
 
 ```bash
-docker run -p 80:80 pixellence/todoapi
+ docker run -p 80:80 --env Collection_Name=<CollectionName> --env Connection_String=<ConnectionString --env Database_Name=<DatabaseName>  pixellence/todoapi
 ```
+or 
+
+you can added to dockerfile this configure
+
+ENV Collection_Name=<CollectionName>
+ENV Connection_String=<ConnectionString>
+ENV Database_Name=<DatabaseName>
+
 ## Usage
-First you need to add some mongodb configuration to appsettings.json file.
-  "DatabaseSettings": {
-    "TodoCollectionName": "Collection Name",
-    "ConnectionString": "Connection string",
-    "DatabaseName": "Database name"
-  },
-  
+
 after that
 You can test with this url
 

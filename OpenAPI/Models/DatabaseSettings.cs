@@ -2,8 +2,8 @@
 {
     public class DatabaseSettings : IDatabaseSettings
     {
-        public string TodoCollectionName { get; set; } = String.Empty;
-        public string ConnectionString { get; set; } = String.Empty;
-        public string DatabaseName { get; set; } = String.Empty;
+        public string TodoCollectionName { get; set; } = Environment.GetEnvironmentVariable("Collection_Name").ToString();
+        public string ConnectionString { get; set; } = Environment.GetEnvironmentVariable("Connection_String").ToString();
+        public string DatabaseName { get; set; } = Environment.GetEnvironmentVariable("Database_Name").ToString();
     }
 }

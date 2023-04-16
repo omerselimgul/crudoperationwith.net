@@ -8,17 +8,17 @@ namespace OpenAPI.Services
     {
         private readonly IMongoCollection<Todo> Todos;
 
-        public TodoService(IOptions<DatabaseSettings> settings)
+        public TodoService(IDatabaseSettings settings)
         {
 
             var mongoClient = new MongoClient(
-                settings.Value.ConnectionString);
+                settings.ConnectionString);
 
             var mongoDatabase = mongoClient.GetDatabase(
-                settings.Value.DatabaseName);
+                settings.DatabaseName);
 
             Todos = mongoDatabase.GetCollection<Todo>(
-                settings.Value.TodoCollectionName);
+                settings.TodoCollectionName);
         }
         public async Task<List<Todo>> GetAsync() =>
             await Todos.Find(_ => true).ToListAsync();
