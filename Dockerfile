@@ -16,5 +16,6 @@ RUN dotnet publish "OpenAPI.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
+ENV ASPNETCORE_ENVIRONMENT=Development
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "OpenAPI.dll"]
