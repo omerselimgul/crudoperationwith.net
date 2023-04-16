@@ -18,15 +18,15 @@ for image run
 First you need to add some mongodb configuration.
 
 ```bash
- docker run -p 80:80 --env Collection_Name=<CollectionName> --env Connection_String=<ConnectionString --env Database_Name=<DatabaseName>  pixellence/todoapi
+ docker run -p 80:80 --env Collection_Name=<CollectionName> --env Connection_String=<ConnectionString> --env Database_Name=<DatabaseName>  pixellence/todoapi
 ```
 or 
 
 you can added to dockerfile this configure
 
-ENV Collection_Name=<CollectionName>
-ENV Connection_String=<ConnectionString>
-ENV Database_Name=<DatabaseName>
+ENV Collection_Name="CollectionName"
+ENV Connection_String="ConnectionString"
+ENV Database_Name="DatabaseName"
 
 ## Usage
 
